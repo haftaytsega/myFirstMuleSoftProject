@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="c83a2bec-eead-4cdd-9942-e3e9a6ce0b41" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="myfirstmuleprojectFlow" doc:id="77787ee8-7f63-4460-9bbf-a51c9c3f3cbc" >
+		<http:listener doc:name="Listener" doc:id="da7a6ad7-33b4-4c0d-81ca-9592b3feb80a" config-ref="HTTP_Listener_config" path="/firstproject"/>
+		<set-variable value="2000" doc:name="Set Variable" doc:id="8128ce1c-7780-4f4b-a0f5-f249965bcf57" variableName="studId"/>
+		<set-payload value="#[vars.studId]" doc:name="Set Payload" doc:id="bdfd72b6-9cd0-41f4-9b0e-f9fe7e89bf2f" />
+		<logger level="INFO" doc:name="Logger" doc:id="dd4ec521-e5c0-4605-bd02-08aaca6c9a1d" message="set variable and set payload are configured"/>
+	</flow>
+</mule>
